@@ -98,6 +98,61 @@ export class SecurtyHeaders extends ServerlessApp implements IExtensions {
   }
 }
 
+export interface CustomProps {
+  /**
+     * The source code of your Lambda function.
+     *
+     * You can point to a file in an
+     * Amazon Simple Storage Service (Amazon S3) bucket or specify your source
+     * code as inline text.
+     *
+     * @stability stable
+  */
+  readonly code?: lambda.AssetCode;
+  /**
+     * The runtime environment for the Lambda function that you are uploading.
+     *
+     * For valid values, see the Runtime property in the AWS Lambda Developer
+     * Guide.
+     *
+     * Use `Runtime.FROM_IMAGE` when when defining a function from a Docker image.
+     *
+     * @stability stable
+  */
+  readonly runtime?: lambda.Runtime;
+  /**
+     * The name of the method within your code that Lambda calls to execute your function.
+     *
+     * The format includes the file name. It can also include
+     * namespaces and other qualifiers, depending on the runtime.
+     * For more information, see https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-features.html#gettingstarted-features-programmingmodel.
+     *
+     * Use `Handler.FROM_IMAGE` when defining a function from a Docker image.
+     *
+     * NOTE: If you specify your source code as inline text by specifying the
+     * ZipFile property within the Code property, specify index.function_name as
+     * the handler.
+     *
+     * @stability stable
+  */
+  readonly handler?: string;
+  /**
+     * The function execution time (in seconds) after which Lambda terminates the function.
+     *
+     * Because the execution time affects cost, set this value
+     * based on the function's expected execution time.
+     *
+     * @default Duration.seconds(3)
+     * @stability stable
+  */
+  readonly timeout?: cdk.Duration;
+  /**
+     * The type of event in response to which should the function be invoked.
+     *
+     * @stability stable
+  */
+  readonly eventType?: cf.LambdaEdgeEventType;
+}
 /**
  * Custom extension sample
  */
@@ -105,16 +160,16 @@ export class Custom implements IExtensions {
   readonly functionArn: string;
   readonly functionVersion: lambda.Version;
   readonly eventType: cf.LambdaEdgeEventType;
-  constructor(scope: cdk.Construct, id: string) {
+  constructor(scope: cdk.Construct, id: string, props: CustomProps) {
     const func = new lambda.Function(scope, 'CustomFunc', {
-      code: lambda.Code.fromAsset(path.join(__dirname, '../lambda/function')),
-      runtime: lambda.Runtime.PYTHON_3_8,
-      handler: 'index.lambda_handler',
-      timeout: cdk.Duration.seconds(5),
+      code: props?.code ?? lambda.Code.fromAsset(path.join(__dirname, '../lambda/function')),
+      runtime: props?.runtime ?? lambda.Runtime.PYTHON_3_8,
+      handler: props?.handler ?? 'index.lambda_handler',
+      timeout: props?.timeout ?? cdk.Duration.seconds(5),
     });
     this.functionArn = func.functionArn;
     this.functionVersion = new lambda.Version(scope, `FuncVer${id}`, { lambda: func });
-    this.eventType = cf.LambdaEdgeEventType.ORIGIN_RESPONSE;
+    this.eventType = props?.eventType ?? cf.LambdaEdgeEventType.ORIGIN_RESPONSE;
   }
 }
 

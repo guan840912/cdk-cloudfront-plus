@@ -17,6 +17,7 @@ Name|Description
 Name|Description
 ----|-----------
 [AntiHotlinkingProps](#cdk-cloudfront-plus-antihotlinkingprops)|Construct properties for AntiHotlinking.
+[CustomProps](#cdk-cloudfront-plus-customprops)|*No description*
 [DistributionProps](#cdk-cloudfront-plus-distributionprops)|*No description*
 [ServerlessAppProps](#cdk-cloudfront-plus-serverlessappprops)|Construct properties for ServerlessApp.
 
@@ -75,11 +76,17 @@ __Implements__: [IExtensions](#cdk-cloudfront-plus-iextensions)
 
 
 ```ts
-new Custom(scope: Construct, id: string)
+new Custom(scope: Construct, id: string, props: CustomProps)
 ```
 
 * **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
 * **id** (<code>string</code>)  *No description*
+* **props** (<code>[CustomProps](#cdk-cloudfront-plus-customprops)</code>)  *No description*
+  * **code** (<code>[AssetCode](#aws-cdk-aws-lambda-assetcode)</code>)  The source code of your Lambda function. __*Optional*__
+  * **eventType** (<code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code>)  The type of event in response to which should the function be invoked. __*Optional*__
+  * **handler** (<code>string</code>)  The name of the method within your code that Lambda calls to execute your function. __*Optional*__
+  * **runtime** (<code>[Runtime](#aws-cdk-aws-lambda-runtime)</code>)  The runtime environment for the Lambda function that you are uploading. __*Optional*__
+  * **timeout** (<code>[Duration](#aws-cdk-core-duration)</code>)  The function execution time (in seconds) after which Lambda terminates the function. __*Default*__: Duration.seconds(3)
 
 
 
@@ -251,6 +258,23 @@ Construct properties for AntiHotlinking.
 Name | Type | Description 
 -----|------|-------------
 **referer** | <code>Array<string></code> | Referer allow list with wildcard(* and ?) support i.e. `example.com` or `exa?ple.*`.
+
+
+
+## struct CustomProps  <a id="cdk-cloudfront-plus-customprops"></a>
+
+
+
+
+
+
+Name | Type | Description 
+-----|------|-------------
+**code**? | <code>[AssetCode](#aws-cdk-aws-lambda-assetcode)</code> | The source code of your Lambda function.<br/>__*Optional*__
+**eventType**? | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The type of event in response to which should the function be invoked.<br/>__*Optional*__
+**handler**? | <code>string</code> | The name of the method within your code that Lambda calls to execute your function.<br/>__*Optional*__
+**runtime**? | <code>[Runtime](#aws-cdk-aws-lambda-runtime)</code> | The runtime environment for the Lambda function that you are uploading.<br/>__*Optional*__
+**timeout**? | <code>[Duration](#aws-cdk-core-duration)</code> | The function execution time (in seconds) after which Lambda terminates the function.<br/>__*Default*__: Duration.seconds(3)
 
 
 
