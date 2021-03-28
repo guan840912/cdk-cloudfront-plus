@@ -8,6 +8,7 @@ Name|Description
 [Custom](#cdk-cloudfront-plus-custom)|Custom extension sample.
 [Distribution](#cdk-cloudfront-plus-distribution)|*No description*
 [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)|The modify response header extension.
+[RewriteUri](#cdk-cloudfront-plus-rewriteuri)|Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
 [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)|Security Headers extension.
 [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)|*No description*
 
@@ -182,6 +183,30 @@ Name | Type | Description
 
 
 
+## class RewriteUri  <a id="cdk-cloudfront-plus-rewriteuri"></a>
+
+Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
+
+use case - see https://aws.amazon.com/tw/blogs/compute/implementing-default-directory-indexes-in-amazon-s3-backed-amazon-cloudfront-origins-using-lambdaedge/
+
+__Implements__: [IExtensions](#cdk-cloudfront-plus-iextensions)
+__Extends__: [Custom](#cdk-cloudfront-plus-custom)
+
+### Initializer
+
+
+
+
+```ts
+new RewriteUri(scope: Construct, id: string)
+```
+
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+
+
+
+
 ## class SecurtyHeaders  <a id="cdk-cloudfront-plus-securtyheaders"></a>
 
 Security Headers extension.
@@ -310,7 +335,7 @@ Name | Type | Description
 
 ## interface IExtensions  <a id="cdk-cloudfront-plus-iextensions"></a>
 
-__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)
+__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [RewriteUri](#cdk-cloudfront-plus-rewriteuri), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)
 
 The Extension interface.
 

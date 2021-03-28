@@ -174,6 +174,22 @@ export class Custom implements IExtensions {
 }
 
 /**
+ * Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins
+ *
+ *  use case - see https://aws.amazon.com/tw/blogs/compute/implementing-default-directory-indexes-in-amazon-s3-backed-amazon-cloudfront-origins-using-lambdaedge/
+ */
+export class RewriteUri extends Custom {
+  constructor(scope: cdk.Construct, id: string) {
+    super(scope, id, {
+      runtime: lambda.Runtime.NODEJS_12_X,
+      handler: 'index.handler',
+      code: lambda.AssetCode.fromAsset(path.join(__dirname, '../custom-lambda-code')),
+      eventType: cf.LambdaEdgeEventType.ORIGIN_REQUEST,
+    });
+  }
+}
+
+/**
  * Generate a lambda function version from the given function ARN
  * @param scope
  * @param id
