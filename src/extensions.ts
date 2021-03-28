@@ -170,6 +170,7 @@ export class Custom implements IExtensions {
     this.functionArn = func.functionArn;
     this.functionVersion = new lambda.Version(scope, `FuncVer${id}`, { lambda: func });
     this.eventType = props?.eventType ?? cf.LambdaEdgeEventType.ORIGIN_RESPONSE;
+
   }
 }
 
@@ -186,6 +187,7 @@ export class RewriteUri extends Custom {
       code: lambda.AssetCode.fromAsset(path.join(__dirname, '../custom-lambda-code')),
       eventType: cf.LambdaEdgeEventType.ORIGIN_REQUEST,
     });
+
   }
 }
 
