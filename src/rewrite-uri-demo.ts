@@ -43,9 +43,7 @@ const cloudfrontWebDistribution = new cf.CloudFrontWebDistribution(stack, 'Cloud
       },
       behaviors: [{
         isDefaultBehavior: true,
-        lambdaFunctionAssociations: [
-          rewriteUriDemo,
-        ],
+        lambdaFunctionAssociations: [rewriteUriDemo],
       }],
     },
   ],
