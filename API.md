@@ -6,6 +6,7 @@ Name|Description
 ----|-----------
 [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking)|The Anti-Hotlinking extension.
 [Custom](#cdk-cloudfront-plus-custom)|Custom extension sample.
+[DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex)|Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
 [Distribution](#cdk-cloudfront-plus-distribution)|*No description*
 [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)|The modify response header extension.
 [RewriteUri](#cdk-cloudfront-plus-rewriteuri)|Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
@@ -69,7 +70,8 @@ Name | Type | Description
 
 Custom extension sample.
 
-__Implements__: [IExtensions](#cdk-cloudfront-plus-iextensions)
+__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [ITaggable](#aws-cdk-core-itaggable), [IExtensions](#cdk-cloudfront-plus-iextensions)
+__Extends__: [NestedStack](#aws-cdk-core-nestedstack)
 
 ### Initializer
 
@@ -85,8 +87,11 @@ new Custom(scope: Construct, id: string, props: CustomProps)
 * **props** (<code>[CustomProps](#cdk-cloudfront-plus-customprops)</code>)  *No description*
   * **code** (<code>[AssetCode](#aws-cdk-aws-lambda-assetcode)</code>)  The source code of your Lambda function. __*Default*__: Code.fromAsset(path.join(__dirname, '../lambda/function'))
   * **eventType** (<code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code>)  The type of event in response to which should the function be invoked. __*Default*__: LambdaEdgeEventType.ORIGIN_RESPONSE
+  * **func** (<code>[Function](#aws-cdk-aws-lambda-function)</code>)  Specify your Lambda function. __*Optional*__
   * **handler** (<code>string</code>)  The name of the method within your code that Lambda calls to execute your function. __*Default*__: index.lambda_handler
   * **runtime** (<code>[Runtime](#aws-cdk-aws-lambda-runtime)</code>)  The runtime environment for the Lambda function that you are uploading. __*Default*__: Runtime.PYTHON_3_8
+  * **solutionId** (<code>string</code>)  The solution identifier. __*Default*__: no identifier
+  * **templateDescription** (<code>string</code>)  The template description. __*Default*__: ''
   * **timeout** (<code>[Duration](#aws-cdk-core-duration)</code>)  The function execution time (in seconds) after which Lambda terminates the function. __*Default*__: Duration.seconds(5)
 
 
@@ -99,6 +104,39 @@ Name | Type | Description
 **eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The Lambda edge event type for this extension.
 **functionArn** | <code>string</code> | Lambda function ARN for this extension.
 **functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
+**props** | <code>[CustomProps](#cdk-cloudfront-plus-customprops)</code> | <span></span>
+
+
+
+## class DefaultDirIndex  <a id="cdk-cloudfront-plus-defaultdirindex"></a>
+
+Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
+
+use case - see https://aws.amazon.com/tw/blogs/compute/implementing-default-directory-indexes-in-amazon-s3-backed-amazon-cloudfront-origins-using-lambdaedge/
+
+__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [ITaggable](#aws-cdk-core-itaggable), [IExtensions](#cdk-cloudfront-plus-iextensions)
+__Extends__: [Custom](#cdk-cloudfront-plus-custom)
+
+### Initializer
+
+
+
+
+```ts
+new DefaultDirIndex(scope: Construct, id: string)
+```
+
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+
+
+
+### Properties
+
+
+Name | Type | Description 
+-----|------|-------------
+**lambdaFunction** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
 
 
 
@@ -305,8 +343,11 @@ Name | Type | Description
 -----|------|-------------
 **code**? | <code>[AssetCode](#aws-cdk-aws-lambda-assetcode)</code> | The source code of your Lambda function.<br/>__*Default*__: Code.fromAsset(path.join(__dirname, '../lambda/function'))
 **eventType**? | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The type of event in response to which should the function be invoked.<br/>__*Default*__: LambdaEdgeEventType.ORIGIN_RESPONSE
+**func**? | <code>[Function](#aws-cdk-aws-lambda-function)</code> | Specify your Lambda function.<br/>__*Optional*__
 **handler**? | <code>string</code> | The name of the method within your code that Lambda calls to execute your function.<br/>__*Default*__: index.lambda_handler
 **runtime**? | <code>[Runtime](#aws-cdk-aws-lambda-runtime)</code> | The runtime environment for the Lambda function that you are uploading.<br/>__*Default*__: Runtime.PYTHON_3_8
+**solutionId**? | <code>string</code> | The solution identifier.<br/>__*Default*__: no identifier
+**templateDescription**? | <code>string</code> | The template description.<br/>__*Default*__: ''
 **timeout**? | <code>[Duration](#aws-cdk-core-duration)</code> | The function execution time (in seconds) after which Lambda terminates the function.<br/>__*Default*__: Duration.seconds(5)
 
 
@@ -343,7 +384,7 @@ Name | Type | Description
 
 ## interface IExtensions  <a id="cdk-cloudfront-plus-iextensions"></a>
 
-__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [RewriteUri](#cdk-cloudfront-plus-rewriteuri), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)
+__Implemented by__: [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)
 
 The Extension interface.
 
