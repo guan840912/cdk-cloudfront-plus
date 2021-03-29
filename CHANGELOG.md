@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.4...v0.1.5) (2021-03-28)
+
+
+### Features
+
+* add-custom-props ([#20](https://github.com/pahudnet/cdk-cloudfront-plus/issues/20)) ([c2915c6](https://github.com/pahudnet/cdk-cloudfront-plus/commit/c2915c6a80655b4fb3685eb45ad07396f4d56d74))
+
 ### [0.1.4](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.3...v0.1.4) (2021-03-26)
 
 ### [0.1.3](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.2...v0.1.3) (2021-03-22)
