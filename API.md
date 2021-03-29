@@ -206,6 +206,14 @@ new RewriteUri(scope: Construct, id: string)
 
 
 
+### Properties
+
+
+Name | Type | Description 
+-----|------|-------------
+**lambdaFunction** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
+
+
 
 ## class SecurtyHeaders  <a id="cdk-cloudfront-plus-securtyheaders"></a>
 

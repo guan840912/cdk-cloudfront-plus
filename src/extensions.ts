@@ -192,6 +192,7 @@ function bumpFunctionVersion(scope: cdk.Construct, id: string, functionArn: stri
  *  use case - see https://aws.amazon.com/tw/blogs/compute/implementing-default-directory-indexes-in-amazon-s3-backed-amazon-cloudfront-origins-using-lambdaedge/
  */
 export class RewriteUri extends Custom {
+  readonly lambdaFunction: lambda.Version;
   constructor(scope: cdk.Construct, id: string) {
     super(scope, id, {
       runtime: lambda.Runtime.NODEJS_12_X,
@@ -199,5 +200,6 @@ export class RewriteUri extends Custom {
       code: lambda.AssetCode.fromAsset(path.join(__dirname, '../custom-lambda-code')),
       eventType: cf.LambdaEdgeEventType.ORIGIN_REQUEST,
     });
+    this.lambdaFunction = this.functionVersion;
   }
 };

@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { CloudFrontWebDistribution, CloudFrontWebDistributionProps, OriginAccessIdentity } from '@aws-cdk/aws-cloudfront';
+import * as cf from '@aws-cdk/aws-cloudfront';
 import * as s3 from '@aws-cdk/aws-s3';
 import { BucketDeployment, Source } from '@aws-cdk/aws-s3-deployment';
 import * as cdk from '@aws-cdk/core';
@@ -17,7 +17,7 @@ const Bucket = new s3.Bucket(stack, 'demoBucket', {
   autoDeleteObjects: true,
   removalPolicy: cdk.RemovalPolicy.DESTROY,
   websiteIndexDocument: 'index.html',
-  websiteErrorDocument: 'error.html',
+  websiteErrorDocument: 'index.html',
 });
 
 // Put demo Object to Bucket.
@@ -28,12 +28,12 @@ new BucketDeployment(stack, 'Deployment', {
 });
 
 // CloudFront OriginAccessIdentity for Bucket
-const originAccessIdentity = new OriginAccessIdentity(stack, 'OriginAccessIdentity', {
+const originAccessIdentity = new cf.OriginAccessIdentity(stack, 'OriginAccessIdentity', {
   comment: `CloudFront OriginAccessIdentity for ${Bucket.bucketName}`,
 });
 
-// Config CloudFrontWebDistribution.
-const distibutionConfig: CloudFrontWebDistributionProps = {
+// CloudfrontWebDistribution
+const CloudfrontWebDistribution = new cf.CloudFrontWebDistribution(stack, 'CloudFrontWebDistribution', {
   enableIpV6: false,
   originConfigs: [
     {
@@ -44,15 +44,12 @@ const distibutionConfig: CloudFrontWebDistributionProps = {
       behaviors: [{
         isDefaultBehavior: true,
         lambdaFunctionAssociations: [
-          {
-            eventType: rewriteUriDemo.eventType,
-            lambdaFunction: rewriteUriDemo.functionVersion,
-          },
+          rewriteUriDemo,
         ],
       }],
     },
   ],
-};
-
-// create CloudFrontWebDistribution.
-new CloudFrontWebDistribution(stack, 'Distribution', distibutionConfig);
+});
+new cdk.CfnOutput(stack, 'distributionDomainName', {
+  value: CloudfrontWebDistribution.distributionDomainName,
+});
