@@ -13,7 +13,7 @@ const stack = new cdk.Stack(app, 'demo-stack');
 const rewriteUriDemo = new extensions.RewriteUri(stack, 'rewriteUriDemo');
 
 // create Demo S3 Bucket.
-const Bucket = new s3.Bucket(stack, 'demoBucket', {
+const bucket = new s3.Bucket(stack, 'demoBucket', {
   autoDeleteObjects: true,
   removalPolicy: cdk.RemovalPolicy.DESTROY,
   websiteIndexDocument: 'index.html',
@@ -23,23 +23,23 @@ const Bucket = new s3.Bucket(stack, 'demoBucket', {
 // Put demo Object to Bucket.
 new BucketDeployment(stack, 'Deployment', {
   sources: [Source.asset(path.join(__dirname, '../host'))],
-  destinationBucket: Bucket,
+  destinationBucket: bucket,
   retainOnDelete: false,
 });
 
 // CloudFront OriginAccessIdentity for Bucket
 const originAccessIdentity = new cf.OriginAccessIdentity(stack, 'OriginAccessIdentity', {
-  comment: `CloudFront OriginAccessIdentity for ${Bucket.bucketName}`,
+  comment: `CloudFront OriginAccessIdentity for ${bucket.bucketName}`,
 });
 
 // CloudfrontWebDistribution
-const CloudfrontWebDistribution = new cf.CloudFrontWebDistribution(stack, 'CloudFrontWebDistribution', {
+const cloudfrontWebDistribution = new cf.CloudFrontWebDistribution(stack, 'CloudFrontWebDistribution', {
   enableIpV6: false,
   originConfigs: [
     {
       s3OriginSource: {
         originAccessIdentity,
-        s3BucketSource: Bucket,
+        s3BucketSource: bucket,
       },
       behaviors: [{
         isDefaultBehavior: true,
@@ -51,5 +51,5 @@ const CloudfrontWebDistribution = new cf.CloudFrontWebDistribution(stack, 'Cloud
   ],
 });
 new cdk.CfnOutput(stack, 'distributionDomainName', {
-  value: CloudfrontWebDistribution.distributionDomainName,
+  value: cloudfrontWebDistribution.distributionDomainName,
 });

@@ -107,6 +107,8 @@ export interface CustomProps {
      * code as inline text.
      *
      * @stability stable
+     *
+     * @default Code.fromAsset(path.join(__dirname, '../lambda/function'))
   */
   readonly code?: lambda.AssetCode;
   /**
@@ -118,6 +120,8 @@ export interface CustomProps {
      * Use `Runtime.FROM_IMAGE` when when defining a function from a Docker image.
      *
      * @stability stable
+     *
+     * @default Runtime.PYTHON_3_8
   */
   readonly runtime?: lambda.Runtime;
   /**
@@ -134,6 +138,8 @@ export interface CustomProps {
      * the handler.
      *
      * @stability stable
+     *
+     * @default index.lambda_handler
   */
   readonly handler?: string;
   /**
@@ -142,7 +148,7 @@ export interface CustomProps {
      * Because the execution time affects cost, set this value
      * based on the function's expected execution time.
      *
-     * @default Duration.seconds(3)
+     * @default Duration.seconds(5)
      * @stability stable
   */
   readonly timeout?: cdk.Duration;
@@ -150,6 +156,8 @@ export interface CustomProps {
      * The type of event in response to which should the function be invoked.
      *
      * @stability stable
+     *
+     * @default LambdaEdgeEventType.ORIGIN_RESPONSE
   */
   readonly eventType?: cf.LambdaEdgeEventType;
 }
