@@ -9,7 +9,6 @@ Name|Description
 [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex)|Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
 [Distribution](#cdk-cloudfront-plus-distribution)|*No description*
 [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)|The modify response header extension.
-[RewriteUri](#cdk-cloudfront-plus-rewriteuri)|Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
 [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)|Security Headers extension.
 [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)|*No description*
 [SimpleLambdaEdge](#cdk-cloudfront-plus-simplelambdaedge)|Simple content generation.
@@ -219,38 +218,6 @@ Name | Type | Description
 **eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The Lambda edge event type for this extension.
 **functionArn** | <code>string</code> | Lambda function ARN for this extension.
 **functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
-
-
-
-## class RewriteUri  <a id="cdk-cloudfront-plus-rewriteuri"></a>
-
-Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
-
-use case - see https://aws.amazon.com/tw/blogs/compute/implementing-default-directory-indexes-in-amazon-s3-backed-amazon-cloudfront-origins-using-lambdaedge/
-
-__Implements__: [IExtensions](#cdk-cloudfront-plus-iextensions)
-__Extends__: [Custom](#cdk-cloudfront-plus-custom)
-
-### Initializer
-
-
-
-
-```ts
-new RewriteUri(scope: Construct, id: string)
-```
-
-* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
-* **id** (<code>string</code>)  *No description*
-
-
-
-### Properties
-
-
-Name | Type | Description 
------|------|-------------
-**lambdaFunction** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | <span></span>
 
 
 
