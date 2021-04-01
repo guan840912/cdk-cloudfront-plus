@@ -245,11 +245,13 @@ function bumpFunctionVersion(scope: cdk.Construct, id: string, functionArn: stri
 export class DefaultDirIndex extends Custom {
   readonly lambdaFunction: lambda.Version;
   constructor(scope: cdk.Construct, id: string) {
-
-    super(scope, id, {
+    const func = new NodejsFunction(scope, 'DefaultDirIndexFunc', {
+      entry: `${EXTENSION_ASSETS_PATH}/cf-default-dir-index/index.ts`,
+      // L@E does not support NODE14 so use NODE12 instead.
       runtime: lambda.Runtime.NODEJS_12_X,
-      handler: 'index.handler',
-      code: lambda.AssetCode.fromAsset(`${EXTENSION_ASSETS_PATH}/cf-default-dir-index`),
+    });
+    super(scope, id, {
+      func,
       eventType: cf.LambdaEdgeEventType.ORIGIN_REQUEST,
       solutionId: 'SO8134',
       templateDescription: 'Cloudfront extension with AWS CDK - Default Directory Index for Amazon S3 Origin.',

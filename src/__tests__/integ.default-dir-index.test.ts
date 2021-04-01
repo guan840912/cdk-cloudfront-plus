@@ -62,17 +62,30 @@ test('minimal usage', () => {
   expect(stack).toHaveResourceLike('AWS::CloudFront::Distribution', {
     DistributionConfig: {
       DefaultCacheBehavior: {
+        AllowedMethods: [
+          'GET',
+          'HEAD',
+        ],
+        CachedMethods: [
+          'GET',
+          'HEAD',
+        ],
+        Compress: true,
+        ForwardedValues: {
+          Cookies: {
+            Forward: 'none',
+          },
+          QueryString: false,
+        },
         LambdaFunctionAssociations: [
           {
             EventType: 'origin-request',
             LambdaFunctionARN: {
-              'Fn::GetAtt': [
-                'DefaultDirIndexDemoNestedStackDefaultDirIndexDemoNestedStackResource55AA5BD2',
-                'Outputs.demostackDefaultDirIndexDemoCustomFuncCurrentVersion2A07ABDERef',
-              ],
+              Ref: 'DefaultDirIndexFuncCurrentVersion61C934369a8c96547b89ebb29f0b9212fc0ea623',
             },
           },
         ],
+        TargetOriginId: 'origin1',
         ViewerProtocolPolicy: 'redirect-to-https',
       },
       DefaultRootObject: 'index.html',
