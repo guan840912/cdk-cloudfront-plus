@@ -1,4 +1,4 @@
-export async function handler(event, context, callback) {
+export async function handler(event: any) {
   // Extract the request from the CloudFront event that is sent to Lambda@Edge
   var request = event.Records[0].cf.request;
 
@@ -15,5 +15,5 @@ export async function handler(event, context, callback) {
   // Replace the received URI with the URI that includes the index page
   request.uri = newuri;
   // Return to CloudFront
-  return callback(null, request);
+  return request;
 }
