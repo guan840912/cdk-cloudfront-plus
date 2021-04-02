@@ -260,6 +260,39 @@ export class DefaultDirIndex extends Custom {
   }
 };
 
+
+export interface SelectOriginByViwerCountryProps {
+  /**
+   * The pre-defined country code table.
+   * Exampe: { 'US': 'amazon.com' }
+   */
+  readonly countryTable: { [code: string]: string };
+}
+
+/**
+ * selective origin by viewer counry
+ */
+export class SelectOriginByViwerCountry extends Custom {
+  constructor(scope: cdk.Construct, id: string, props: SelectOriginByViwerCountryProps) {
+    const func = new NodejsFunction(scope, 'SelectOriginViewerCountryFunc', {
+      entry: `${EXTENSION_ASSETS_PATH}/select-origin-by-viewer-country/index.ts`,
+      // L@E does not support NODE14 so use NODE12 instead.
+      runtime: lambda.Runtime.NODEJS_12_X,
+      bundling: {
+        define: {
+          'process.env.COUNTRY_CODE_TABLE': jsonStringifiedBundlingDefinition(props.countryTable),
+        },
+      },
+    });
+    super(scope, id, {
+      func,
+      eventType: cf.LambdaEdgeEventType.ORIGIN_REQUEST,
+      solutionId: '',
+      templateDescription: 'Cloudfront extension with AWS CDK - Selective Origin by Viewer Country',
+    });
+  }
+};
+
 /**
  * Simple content generation
  * @see https://github.com/awslabs/aws-cloudfront-extensions/tree/main/edge/nodejs/simple-lambda-edge
@@ -279,3 +312,10 @@ export class SimpleLambdaEdge extends Custom {
     });
   }
 };
+
+
+function jsonStringifiedBundlingDefinition(value: any): string {
+  return JSON.stringify(value)
+    .replace(/"/g, '\\"')
+    .replace(/,/g, '\\,');
+}

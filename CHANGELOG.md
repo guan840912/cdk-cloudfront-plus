@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.19](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.18...v0.1.19) (2021-04-01)
+
+### [0.1.18](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.17...v0.1.18) (2021-04-01)
+
+### [0.1.17](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.16...v0.1.17) (2021-04-01)
+
+
+### Features
+
+* **ext:** new extension - Select origin by viewer country  ([#39](https://github.com/pahudnet/cdk-cloudfront-plus/issues/39)) ([b1b0efd](https://github.com/pahudnet/cdk-cloudfront-plus/commit/b1b0efdfc2b7a5580ffb35fee65ba74008c2bc99))
+
 ### [0.1.16](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.15...v0.1.16) (2021-04-01)
 
 
