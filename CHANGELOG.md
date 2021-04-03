@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.24](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.23...v0.1.24) (2021-04-03)
+
+
+### Bug Fixes
+
+* fix wrong path ([#48](https://github.com/pahudnet/cdk-cloudfront-plus/issues/48)) ([fcd3da3](https://github.com/pahudnet/cdk-cloudfront-plus/commit/fcd3da3cc4b5186ef0f5ea41281513857a3bd5ef))
+
 ### [0.1.23](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.22...v0.1.23) (2021-04-03)
 
 
