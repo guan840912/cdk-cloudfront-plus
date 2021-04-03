@@ -11,7 +11,7 @@ $ yarn watch
 Open a seperate terminal and run:
 
 ```sh
-$ AWS_REGION=us-east-1 cdk --app lib/demo/update-the-error-status-code/index.js diff
+$ AWS_REGION=us-east-1 cdk --app lib/demo/redirect-custom-error-page/index.js diff
 ```
 
 On deploy completed, open the cloudfront URL with
