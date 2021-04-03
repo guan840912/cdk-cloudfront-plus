@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.23](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.22...v0.1.23) (2021-04-03)
+
+
+### Features
+
+* **ext:** new extension - Redirect to custom error page ([#46](https://github.com/pahudnet/cdk-cloudfront-plus/issues/46)) ([14ffc56](https://github.com/pahudnet/cdk-cloudfront-plus/commit/14ffc564f75900fb7596383d550351ebfd08ba1e))
+
+### [0.1.22](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.21...v0.1.22) (2021-04-03)
+
+### [0.1.21](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.20...v0.1.21) (2021-04-02)
+
+### [0.1.20](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.19...v0.1.20) (2021-04-02)
+
 ### [0.1.19](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.18...v0.1.19) (2021-04-01)
 
 ### [0.1.18](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.17...v0.1.18) (2021-04-01)
