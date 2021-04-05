@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.32](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.31...v0.1.32) (2021-04-05)
+
+
+### Features
+
+* so8120 multiple origin ip retry ([#58](https://github.com/pahudnet/cdk-cloudfront-plus/issues/58)) ([ceb9bfc](https://github.com/pahudnet/cdk-cloudfront-plus/commit/ceb9bfcf8392d2964867f6c7d745154d180f140a))
+
 ### [0.1.31](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.30...v0.1.31) (2021-04-05)
 
 ### [0.1.30](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.29...v0.1.30) (2021-04-05)
