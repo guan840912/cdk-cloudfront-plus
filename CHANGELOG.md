@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.31](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.30...v0.1.31) (2021-04-05)
+
+### [0.1.30](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.29...v0.1.30) (2021-04-05)
+
+### [0.1.29](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.28...v0.1.29) (2021-04-04)
+
+### [0.1.28](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.27...v0.1.28) (2021-04-04)
+
+
+### Features
+
+* **SO8118:** Access Origin by Geolocation ([#52](https://github.com/pahudnet/cdk-cloudfront-plus/issues/52)) ([7eba0e9](https://github.com/pahudnet/cdk-cloudfront-plus/commit/7eba0e939a438b9a0066d4bea65ea00229f00849))
+
+### [0.1.27](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.26...v0.1.27) (2021-04-04)
+
+### [0.1.26](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.25...v0.1.26) (2021-04-03)
+
+
+### Features
+
+* **extension:** redirect by geolocation  ([#50](https://github.com/pahudnet/cdk-cloudfront-plus/issues/50)) ([012f591](https://github.com/pahudnet/cdk-cloudfront-plus/commit/012f59110be8f450e4b432f607cf49580b8e79f5)), closes [#11](https://github.com/pahudnet/cdk-cloudfront-plus/issues/11)
+
 ### [0.1.25](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.24...v0.1.25) (2021-04-03)
 
 ### [0.1.24](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.23...v0.1.24) (2021-04-03)
