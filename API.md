@@ -11,6 +11,7 @@ Name|Description
 [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex)|Default Directory Indexes in Amazon S3-backed Amazon CloudFront Origins.
 [Distribution](#cdk-cloudfront-plus-distribution)|*No description*
 [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader)|The modify response header extension.
+[MultipleOriginIpRetry](#cdk-cloudfront-plus-multipleoriginipretry)|Multiple Origin IP Retry extension.
 [RedirectByGeolocation](#cdk-cloudfront-plus-redirectbygeolocation)|Forward request to the nearest PoP as per geolocation.
 [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders)|Security Headers extension.
 [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)|*No description*
@@ -25,6 +26,7 @@ Name|Description
 [AntiHotlinkingProps](#cdk-cloudfront-plus-antihotlinkingprops)|Construct properties for AntiHotlinking.
 [CustomProps](#cdk-cloudfront-plus-customprops)|*No description*
 [DistributionProps](#cdk-cloudfront-plus-distributionprops)|*No description*
+[MultipleOriginIpRetryProps](#cdk-cloudfront-plus-multipleoriginipretryprops)|Construct properties for MultipleOriginIpRetry.
 [RedirectByGeolocationProps](#cdk-cloudfront-plus-redirectbygeolocationprops)|*No description*
 [ServerlessAppProps](#cdk-cloudfront-plus-serverlessappprops)|Construct properties for ServerlessApp.
 
@@ -282,6 +284,41 @@ Name | Type | Description
 
 
 
+## class MultipleOriginIpRetry  <a id="cdk-cloudfront-plus-multipleoriginipretry"></a>
+
+Multiple Origin IP Retry extension.
+
+__Implements__: [IConstruct](#constructs-iconstruct), [IConstruct](#aws-cdk-core-iconstruct), [IConstruct](#constructs-iconstruct), [IDependable](#aws-cdk-core-idependable), [IExtensions](#cdk-cloudfront-plus-iextensions)
+__Extends__: [ServerlessApp](#cdk-cloudfront-plus-serverlessapp)
+
+### Initializer
+
+
+
+
+```ts
+new MultipleOriginIpRetry(scope: Construct, id: string, props: MultipleOriginIpRetryProps)
+```
+
+* **scope** (<code>[Construct](#aws-cdk-core-construct)</code>)  *No description*
+* **id** (<code>string</code>)  *No description*
+* **props** (<code>[MultipleOriginIpRetryProps](#cdk-cloudfront-plus-multipleoriginipretryprops)</code>)  *No description*
+  * **originIp** (<code>Array<string></code>)  Origin IP list for retry, use semicolon to separate multiple IP addresses. 
+  * **originProtocol** (<code>string</code>)  Origin IP list for retry, use semicolon to separate multiple IP addresses. 
+
+
+
+### Properties
+
+
+Name | Type | Description 
+-----|------|-------------
+**eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The Lambda edge event type for this extension.
+**functionArn** | <code>string</code> | Lambda function ARN for this extension.
+**functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
+
+
+
 ## class RedirectByGeolocation  <a id="cdk-cloudfront-plus-redirectbygeolocation"></a>
 
 Forward request to the nearest PoP as per geolocation.
@@ -472,7 +509,7 @@ Name | Type | Description
 
 ## interface IExtensions  <a id="cdk-cloudfront-plus-iextensions"></a>
 
-__Implemented by__: [AccessOriginByGeolocation](#cdk-cloudfront-plus-accessoriginbygeolocation), [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [CustomErrorPage](#cdk-cloudfront-plus-customerrorpage), [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [RedirectByGeolocation](#cdk-cloudfront-plus-redirectbygeolocation), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders), [SimpleLambdaEdge](#cdk-cloudfront-plus-simplelambdaedge)
+__Implemented by__: [AccessOriginByGeolocation](#cdk-cloudfront-plus-accessoriginbygeolocation), [AntiHotlinking](#cdk-cloudfront-plus-antihotlinking), [Custom](#cdk-cloudfront-plus-custom), [CustomErrorPage](#cdk-cloudfront-plus-customerrorpage), [DefaultDirIndex](#cdk-cloudfront-plus-defaultdirindex), [ModifyResponseHeader](#cdk-cloudfront-plus-modifyresponseheader), [MultipleOriginIpRetry](#cdk-cloudfront-plus-multipleoriginipretry), [RedirectByGeolocation](#cdk-cloudfront-plus-redirectbygeolocation), [SecurtyHeaders](#cdk-cloudfront-plus-securtyheaders), [SimpleLambdaEdge](#cdk-cloudfront-plus-simplelambdaedge)
 
 The Extension interface.
 
@@ -484,6 +521,20 @@ Name | Type | Description
 **eventType** | <code>[LambdaEdgeEventType](#aws-cdk-aws-cloudfront-lambdaedgeeventtype)</code> | The Lambda edge event type for this extension.
 **functionArn** | <code>string</code> | Lambda function ARN for this extension.
 **functionVersion** | <code>[Version](#aws-cdk-aws-lambda-version)</code> | Lambda function version for the function.
+
+
+
+## struct MultipleOriginIpRetryProps  <a id="cdk-cloudfront-plus-multipleoriginipretryprops"></a>
+
+
+Construct properties for MultipleOriginIpRetry.
+
+
+
+Name | Type | Description 
+-----|------|-------------
+**originIp** | <code>Array<string></code> | Origin IP list for retry, use semicolon to separate multiple IP addresses.
+**originProtocol** | <code>string</code> | Origin IP list for retry, use semicolon to separate multiple IP addresses.
 
 
 

@@ -104,6 +104,48 @@ export class SecurtyHeaders extends ServerlessApp implements IExtensions {
   }
 }
 
+/**
+ * Construct properties for MultipleOriginIpRetry
+ */
+export interface MultipleOriginIpRetryProps {
+  /**
+   * Origin IP list for retry, use semicolon to separate multiple IP addresses
+   */
+  readonly originIp: string[];
+
+  /**
+   * Origin IP list for retry, use semicolon to separate multiple IP addresses
+   *
+   * @example https or http
+   */
+  readonly originProtocol: string;
+}
+
+/**
+ * Multiple Origin IP Retry extension
+ * @see https://ap-northeast-1.console.aws.amazon.com/lambda/home#/create/app?applicationId=arn:aws:serverlessrepo:us-east-1:418289889111:applications/multiple-origin-IP-retry
+ * @see https://github.com/awslabs/aws-cloudfront-extensions/tree/main/edge/nodejs/multiple-origin-IP-retry
+ */
+export class MultipleOriginIpRetry extends ServerlessApp implements IExtensions {
+  readonly functionArn: string;
+  readonly functionVersion: lambda.Version;
+  readonly eventType: cf.LambdaEdgeEventType;
+  constructor(scope: cdk.Construct, id: string, props: MultipleOriginIpRetryProps) {
+    super(scope, id, {
+      applicationId: 'arn:aws:serverlessrepo:us-east-1:418289889111:applications/multiple-origin-IP-retry',
+      semanticVersion: '1.0.1',
+      parameters: {
+        OriginIPList: props.originIp.join(';'),
+        OriginProtocol: props.originProtocol,
+      },
+    });
+    const stack = cdk.Stack.of(scope);
+    this.functionArn = this.resource.getAtt('Outputs.MultipleOriginIPRetry').toString();
+    this.functionVersion = bumpFunctionVersion(stack, id, this.functionArn);
+    this.eventType = cf.LambdaEdgeEventType.ORIGIN_REQUEST;
+  }
+}
+
 export interface CustomProps {
   /**
    * Specify your Lambda function.
