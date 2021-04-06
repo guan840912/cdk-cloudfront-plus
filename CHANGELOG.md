@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.2.2...v0.2.3) (2021-04-06)
+
+
+### Features
+
+* **SO8112:** normalize-query-string ([#64](https://github.com/pahudnet/cdk-cloudfront-plus/issues/64)) ([92c3d90](https://github.com/pahudnet/cdk-cloudfront-plus/commit/92c3d907e72bb30ea5f81a724723e99a6c012e3e))
+
+### [0.2.2](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.2.1...v0.2.2) (2021-04-06)
+
+### [0.2.1](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.35...v0.2.1) (2021-04-06)
+
+## [0.2.0](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.35...v0.2.0) (2021-04-05)
+
+### [0.1.35](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.34...v0.1.35) (2021-04-05)
+
+### [0.1.34](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.33...v0.1.34) (2021-04-05)
+
+
+### Features
+
+* **ext): OAuth2 Authentication (Authorization Code Grant:** init ([#59](https://github.com/pahudnet/cdk-cloudfront-plus/issues/59)) ([6d5e440](https://github.com/pahudnet/cdk-cloudfront-plus/commit/6d5e44042dc864a138e943224db9e40c1fee7c19)), closes [#17](https://github.com/pahudnet/cdk-cloudfront-plus/issues/17)
+
+### [0.1.33](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.32...v0.1.33) (2021-04-05)
+
 ### [0.1.32](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.1.31...v0.1.32) (2021-04-05)
 
 
