@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.2.3...v0.2.4) (2021-04-06)
+
+
+### Bug Fixes
+
+* Normalize query string class id in integ default ([#65](https://github.com/pahudnet/cdk-cloudfront-plus/issues/65)) ([765bd26](https://github.com/pahudnet/cdk-cloudfront-plus/commit/765bd2667e066e8cabd637cfc495edee5013da26))
+
 ### [0.2.3](https://github.com/pahudnet/cdk-cloudfront-plus/compare/v0.2.2...v0.2.3) (2021-04-06)
 
 
