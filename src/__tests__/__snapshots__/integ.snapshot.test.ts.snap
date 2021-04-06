@@ -3,36 +3,6 @@
 exports[`integ snapshot validation 1`] = `
 Object {
   "Resources": Object {
-    "ConvertQueryStringC66D2904": Object {
-      "Properties": Object {
-        "Location": Object {
-          "ApplicationId": "arn:aws:serverlessrepo:us-east-1:418289889111:applications/normalize-query-string",
-          "SemanticVersion": "1.0.1",
-        },
-      },
-      "Type": "AWS::Serverless::Application",
-    },
-    "LambdaVersionConvertQueryStringFB31F9D1": Object {
-      "Properties": Object {
-        "FunctionName": Object {
-          "Fn::Select": Array [
-            6,
-            Object {
-              "Fn::Split": Array [
-                ":",
-                Object {
-                  "Fn::GetAtt": Array [
-                    "ConvertQueryStringC66D2904",
-                    "Outputs.NormalizeQueryStringFunction",
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      },
-      "Type": "AWS::Lambda::Version",
-    },
     "LambdaVersionMulOrgIpRetry80DB82E6": Object {
       "Properties": Object {
         "FunctionName": Object {
@@ -45,6 +15,27 @@ Object {
                   "Fn::GetAtt": Array [
                     "MulOrgIpRetry0DF05C45",
                     "Outputs.MultipleOriginIPRetry",
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Version",
+    },
+    "LambdaVersionNormalizeQueryStringF7AE931F": Object {
+      "Properties": Object {
+        "FunctionName": Object {
+          "Fn::Select": Array [
+            6,
+            Object {
+              "Fn::Split": Array [
+                ":",
+                Object {
+                  "Fn::GetAtt": Array [
+                    "NormalizeQueryString8516A486",
+                    "Outputs.NormalizeQueryStringFunction",
                   ],
                 },
               ],
@@ -88,6 +79,15 @@ Object {
       },
       "Type": "AWS::Serverless::Application",
     },
+    "NormalizeQueryString8516A486": Object {
+      "Properties": Object {
+        "Location": Object {
+          "ApplicationId": "arn:aws:serverlessrepo:us-east-1:418289889111:applications/normalize-query-string",
+          "SemanticVersion": "1.0.1",
+        },
+      },
+      "Type": "AWS::Serverless::Application",
+    },
     "SecurityHeadersEA108852": Object {
       "Properties": Object {
         "Location": Object {
@@ -119,7 +119,7 @@ Object {
               Object {
                 "EventType": "viewer-request",
                 "LambdaFunctionARN": Object {
-                  "Ref": "LambdaVersionConvertQueryStringFB31F9D1",
+                  "Ref": "LambdaVersionNormalizeQueryStringF7AE931F",
                 },
               },
             ],
