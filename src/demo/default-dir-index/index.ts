@@ -54,6 +54,26 @@ const cloudfrontWebDistribution = new cf.CloudFrontWebDistribution(stack, 'Cloud
     },
   ],
 });
+
+// CloudfrontWebDistribution Error
+const cloudfrontWebDistributionError = new cf.CloudFrontWebDistribution(stack, 'cloudfrontWebDistributionError', {
+  originConfigs: [
+    {
+      s3OriginSource: {
+        originAccessIdentity,
+        s3BucketSource: bucket,
+      },
+      behaviors: [{
+        isDefaultBehavior: true,
+      }],
+    },
+  ],
+});
+
 new cdk.CfnOutput(stack, 'distributionDomainName', {
-  value: cloudfrontWebDistribution.distributionDomainName,
+  value: `https://${cloudfrontWebDistribution.distributionDomainName}`,
+});
+
+new cdk.CfnOutput(stack, 'errorDistributionDomainName', {
+  value: `https://${cloudfrontWebDistributionError.distributionDomainName}`,
 });

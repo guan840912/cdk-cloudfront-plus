@@ -22,7 +22,6 @@ cdk.out
 coverage
 demo-assets
 dependabot.yml
-images
 jspm_packages/
 junit.xml
 lerna-debug.log*

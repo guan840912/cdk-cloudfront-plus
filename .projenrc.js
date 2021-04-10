@@ -109,13 +109,12 @@ automation.projenYarnUpgrade();
 const common_exclude = [
   'cdk.out',
   'cdk.context.json',
-  'images',
   'yarn-error.log',
   'dependabot.yml',
   'demo-assets',
   '.env',
 ];
-project.npmignore.exclude(...common_exclude);
+project.npmignore.exclude(...common_exclude, 'images');
 project.gitignore.exclude(...common_exclude);
 
 project.synth();
