@@ -22,7 +22,6 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-cloudfront-origins',
     '@aws-cdk/aws-iam',
     '@aws-cdk/aws-kinesisfirehose',
-    '@aws-cdk/aws-lambda',
     '@aws-cdk/aws-lambda-nodejs',
     '@aws-cdk/aws-sam',
     '@aws-cdk/aws-s3',
@@ -37,6 +36,7 @@ const project = new AwsCdkConstructLibrary({
   ],
   bundledDeps: [
     'dotenv',
+    'esbuild',
   ],
   publishToPypi: {
     distName: 'cdk-cloudfront-plus',
